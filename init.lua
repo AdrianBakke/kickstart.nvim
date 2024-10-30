@@ -840,14 +840,17 @@ require('lazy').setup({
     'folke/tokyonight.nvim',
     --'Mofiqul/vscode.nvim',
     priority = 1000, -- Make sure to load this before all the other start plugins.
+    opts = {
+      style = 'night',
+      on_colors = function(colors)
+        colors.border = '#565f89'
+      end,
+    },
     init = function()
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
       vim.cmd.colorscheme 'tokyonight-night'
-      -- vim.g.tokyonight_colors = { border = 'orange' }
-      -- vim.cmd.colorscheme 'default'
-      -- vim.api.nvim_set_hl(0, 'WinSeparator', { fg = vim.g.tokyonight_colors.border })
 
       -- You can configure highlights by doing something like:
       --vim.cmd.hi 'Comment gui=none'
