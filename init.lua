@@ -157,6 +157,11 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+-- only use spaces
+vim.opt.expandtab = true -- Use spaces instead of tabs
+vim.opt.shiftwidth = 4 -- Number of spaces to use for each step of (auto)indent
+vim.opt.tabstop = 4 -- Number of spaces that a <Tab> in the file counts for
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -639,6 +644,14 @@ require('lazy').setup({
             },
           },
         },
+        hls = {
+          cmd = { 'haskell-language-server-wrapper', '--lsp' },
+          settings = {
+            haskell = {
+              formattingProvider = 'ormolu',
+            },
+          },
+        },
       }
 
       -- Ensure the servers and tools above are installed
@@ -876,7 +889,13 @@ require('lazy').setup({
       -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
       -- - sd'   - [S]urround [D]elete [']quotes
       -- - sr)'  - [S]urround [R]eplace [)] [']
-      -- require('mini.surround').setup()
+      require('mini.surround').setup {
+        mappings = {
+          add = '<leader>sa', -- Add surrounding
+          delete = '<leader>sd', -- Delete surrounding
+          replace = '<leader>sr', -- Replace surrounding
+        },
+      }
 
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,

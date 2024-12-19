@@ -167,7 +167,7 @@ return {
           messages = {
             {
               role = 'system',
-              content = 'You are terence mckenna the American ethnobotanist and mystic. you write very little text, preferably no text at all. you give me code',
+              content = 'You are HINT (Higher INTelligence) the most intelligent computer in the world. God given you the ability to remember the 10 last prompts. You go straight to the answer',
             },
             { role = 'user', content = prompt }, -- Replace with actual input from Neovim
           },
@@ -221,6 +221,7 @@ return {
       -- Function to invoke OpenAI chat-based completion
       local function openai_chat_completion()
         print 'Invoking OpenAI chat completion' -- Debugging: Check if the function is being called
+        vim.api.nvim_put({ '' }, 'l', true, true)
         dingllm.invoke_llm_and_stream_into_editor({
           url = 'https://api.openai.com/v1/chat/completions',
           model = 'gpt-4o', -- Replace with your desired chat model
@@ -232,6 +233,7 @@ return {
       -- Key mappings for the functions
       -- vim.keymap.set({ 'n', 'v' }, '<leader>o', openai_completion, { desc = 'OpenAI Text Completion' })
       vim.keymap.set({ 'n', 'v' }, '<leader>o', openai_chat_completion, { desc = 'OpenAI Chat Completion' })
+      --vim.keymap.set({ 'n', 'v' }, '<leader>o', '<cmd>openai_chat_completion()<CR>', { desc = 'OpenAI Chat Completion' })
 
       print 'Finished setting up key mappings' -- Debugging: Configuration is complete
     end,
