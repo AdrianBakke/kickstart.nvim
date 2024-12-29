@@ -122,7 +122,7 @@ return {
       local function handle_openai_spec_data(data_stream, event)
         if data_stream == '[DONE]' then
           print 'Stream complete'
-          return
+          dingllm.write_string_at_cursor '\n'
         end
 
         -- Attempt to decode the JSON data
@@ -230,7 +230,6 @@ return {
         }, custom_make_openai_spec_curl_args, handle_openai_spec_data)
       end
 
-      -- Key mappings for the functions
       -- vim.keymap.set({ 'n', 'v' }, '<leader>o', openai_completion, { desc = 'OpenAI Text Completion' })
       vim.keymap.set({ 'n', 'v' }, '<leader>o', openai_chat_completion, { desc = 'OpenAI Chat Completion' })
       --vim.keymap.set({ 'n', 'v' }, '<leader>o', '<cmd>openai_chat_completion()<CR>', { desc = 'OpenAI Chat Completion' })

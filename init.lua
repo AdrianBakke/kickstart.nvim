@@ -90,6 +90,8 @@ P.S. You can delete this when you're done too. It's your config now! :)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+--vim.cmd.colorscheme 'vim' -- Change to your preferred variant
+
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
@@ -863,13 +865,51 @@ require('lazy').setup({
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'tokyonight-night'
+      --vim.cmd.colorscheme 'tokyonight-night'
 
       -- You can configure highlights by doing something like:
       --vim.cmd.hi 'Comment gui=none'
     end,
   },
+  {
+    'Shatur/neovim-ayu',
+    mirage = false, -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
+    terminal = true, -- Set to `false` to let terminal manage its own colors.
+    overrides = {}, -- A dictionary of group names, each associated with a dictionary of parameters (`bg`, `fg`, `sp` and `style`) and colors in hex.
+    config = function()
+      vim.cmd.colorscheme 'ayu-dark'
+    end,
+  },
 
+  { -- GitHub colorscheme
+    'projekt0n/github-nvim-theme',
+    priority = 1000, -- Ensure it loads before other start plugins
+    config = function()
+      require('github-theme').setup {
+        -- You can set options here, for example:
+        themeStyle = 'dark_default', -- Other options: "dark", "light", "dimmed", etc.
+      }
+
+      -- Load the colorscheme
+      --vim.cmd.colorscheme 'github_dark_default' -- Change to your preferred variant
+    end,
+  },
+  {
+    'dracula/vim',
+    as = 'dracula', -- This assigns a specific name to the plugin
+    priority = 1000,
+    config = function()
+      --vim.cmd.colorscheme 'dracula'
+    end,
+  },
+  {
+    'catppuccin/nvim',
+    name = 'catppuccin',
+    priority = 1000,
+    config = function()
+      --vim.cmd.colorscheme 'catppuccin-mocha'
+    end,
+  },
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
@@ -988,4 +1028,16 @@ require('lazy').setup({
   },
 })
 
-vim.diagnostic.config { virtual_text = false }
+vim.diagnostic.config {
+  virtual_text = false,
+  underline = false,
+}
+
+vim.keymap.set('n', '<leader>td', function()
+  local current_virtual_text = vim.diagnostic.config().virtual_text
+  local current_underline = vim.diagnostic.config().underline
+  vim.diagnostic.config {
+    virtual_text = not current_virtual_text,
+    underline = not current_underline,
+  }
+end, { desc = '[T]oggle [D]iagnostics' })
