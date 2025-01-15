@@ -164,6 +164,8 @@ vim.opt.expandtab = true -- Use spaces instead of tabs
 vim.opt.shiftwidth = 4 -- Number of spaces to use for each step of (auto)indent
 vim.opt.tabstop = 4 -- Number of spaces that a <Tab> in the file counts for
 
+vim.opt.colorcolumn = "150"
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -865,7 +867,7 @@ require('lazy').setup({
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      --vim.cmd.colorscheme 'tokyonight-night'
+      vim.cmd.colorscheme 'tokyonight-night'
 
       -- You can configure highlights by doing something like:
       --vim.cmd.hi 'Comment gui=none'
@@ -877,7 +879,7 @@ require('lazy').setup({
     terminal = true, -- Set to `false` to let terminal manage its own colors.
     overrides = {}, -- A dictionary of group names, each associated with a dictionary of parameters (`bg`, `fg`, `sp` and `style`) and colors in hex.
     config = function()
-      vim.cmd.colorscheme 'ayu-dark'
+      --vim.cmd.colorscheme 'ayu-dark'
     end,
   },
 
