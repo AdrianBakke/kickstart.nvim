@@ -4,7 +4,7 @@
 -- See the kickstart.nvim README for more information
 return {
   {
-    'yacineMTB/dingllm.nvim',
+    'AdrianBakke/dingllm.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
       local dingllm = require 'dingllm'
