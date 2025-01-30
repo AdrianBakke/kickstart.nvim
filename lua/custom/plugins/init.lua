@@ -9,6 +9,7 @@ return {
     config = function()
       local dingllm = require 'dingllm'
       vim.keymap.set({ 'n', 'v' }, '<leader>o', dingllm.openai_chat_completion, { desc = 'OpenAI Chat Completion' })
+      vim.keymap.set({ 'n', 'v' }, '<leader>k', dingllm.deepseek_chat_completion, { desc = 'DeepSeek Chat Completion' })
     end,
   },
 }
