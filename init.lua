@@ -160,11 +160,11 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 
 -- only use spaces
-vim.opt.expandtab = true -- Use spaces instead of tabs
 vim.opt.shiftwidth = 4 -- Number of spaces to use for each step of (auto)indent
 vim.opt.tabstop = 4 -- Number of spaces that a <Tab> in the file counts for
+vim.opt.expandtab = true -- Use spaces instead of tabs
 
-vim.opt.colorcolumn = "150"
+vim.opt.colorcolumn = '150'
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -643,12 +643,11 @@ require('lazy').setup({
               completion = {
                 callSnippet = 'Replace',
               },
-              -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-              -- diagnostics = { disable = { 'missing-fields' } },
             },
           },
         },
         hls = {
+
           cmd = { 'haskell-language-server-wrapper', '--lsp' },
           settings = {
             haskell = {
