@@ -8,9 +8,10 @@ return {
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
       local hint = require 'hint'
-      vim.keymap.set({ 'n', 'v' }, '<leader>o', hint.openai_chat_completion, { desc = 'OpenAI Chat Completion' })
-      vim.keymap.set({ 'n', 'v' }, '<leader>k', hint.deepseek_chat_completion, { desc = 'DeepSeek Chat Completion' })
-      vim.keymap.set({ 'n', 'v' }, '<leader>h', hint.open_window, { desc = 'Open HINT Window' })
+      vim.keymap.set({ 'n', 'v' }, '<C-j>', hint.open_window, { desc = 'Open HINT Window' })
+      vim.keymap.set({ 'n', 'v' }, '<leader>1', hint.openai_chat_completion, { desc = 'OpenAI Chat Completion' })
+      vim.keymap.set({ 'n', 'v' }, '<leader>2', hint.openai_chat_completion_reasoner, { desc = 'OpenAI Chat Completion Reasoner' })
+      vim.keymap.set({ 'n', 'v' }, '<leader>3', hint.deepseek_chat_completion, { desc = 'DeepSeek Chat Completion Reasoner' })
     end,
   },
 }
