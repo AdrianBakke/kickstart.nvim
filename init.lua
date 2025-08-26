@@ -64,7 +64,7 @@ Kickstart Guide:
     with something. It's one of my favorite Neovim features.
 
     MOST IMPORTANTLY, we provide a keymap "<space>sh" to [s]earch the [h]elp documentation,
-    which is very useful when you're not exactly sure of what you're looking for.
+    which is very useful when you're not exactly sure of what you're looking for.init
 
   I have left several `:help X` comments throughout the init.lua
     These are hints about where to find more information about the relevant settings,
@@ -184,6 +184,9 @@ vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagn
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+
+-- select all text
+vim.keymap.set('n', '<leader>a', 'ggVG', { desc = 'Select all text in Visual mode' })
 
 -- TIP: Disable arrow keys in normal mode
 -- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
@@ -866,8 +869,8 @@ require('lazy').setup({
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'tokyonight-night'
-      vim.api.nvim_set_hl(0, 'Comment', { fg = '#ff82ab' })
+      -- vim.cmd.colorscheme 'tokyonight-night'
+      -- vim.api.nvim_set_hl(0, 'Comment', { fg = '#ff82ab' })
 
       -- You can configure highlights by doing something like:
       --vim.cmd.hi 'Comment gui=none'
