@@ -167,6 +167,9 @@ vim.opt.expandtab = true -- Use spaces instead of tabs
 
 vim.opt.colorcolumn = '150'
 
+-- update file on external edit
+vim.o.autoread = true
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
