@@ -943,6 +943,13 @@ require('lazy').setup({
           add = '<leader>sa', -- Add surrounding
           delete = '<leader>sd', -- Delete surrounding
           replace = '<leader>sr', -- Replace surrounding
+
+          find = '',
+          find_left = '',
+          highlight = '',
+          update_n_lines = '',
+          suffix_last = '',
+          suffix_next = '',
         },
       }
 
