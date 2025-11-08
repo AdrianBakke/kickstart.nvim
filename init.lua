@@ -653,15 +653,15 @@ require('lazy').setup({
             },
           },
         },
-        hls = {
-
-          cmd = { 'haskell-language-server-wrapper', '--lsp' },
-          settings = {
-            haskell = {
-              formattingProvider = 'ormolu',
-            },
-          },
-        },
+        -- hls = {
+        --
+        --   cmd = { 'haskell-language-server-wrapper', '--lsp' },
+        --   settings = {
+        --     haskell = {
+        --       formattingProvider = 'ormolu',
+        --     },
+        --   },
+        -- },
       }
 
       -- Ensure the servers and tools above are installed
