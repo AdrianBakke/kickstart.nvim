@@ -25,6 +25,8 @@ return {
     end,
   },
 
+  { require 'kickstart.plugins.neo-tree' },
+
   -- Scrollbar
   {
     'petertriho/nvim-scrollbar',
@@ -96,7 +98,6 @@ return {
         clangd = {},
         pyright = {},
         ts_ls = {},
-        eslint = {},
         html = {},
         cssls = {},
         hls = {

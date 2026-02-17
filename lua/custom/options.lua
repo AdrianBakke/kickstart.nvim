@@ -21,16 +21,6 @@ vim.diagnostic.config {
 -- Select all
 vim.keymap.set('n', '<leader>a', 'ggVG', { desc = 'Select all text' })
 
--- Toggle diagnostics
-vim.keymap.set('n', '<leader>td', function()
-  local current_virtual_text = vim.diagnostic.config().virtual_text
-  local current_underline = vim.diagnostic.config().underline
-  vim.diagnostic.config {
-    virtual_text = not current_virtual_text,
-    underline = not current_underline,
-  }
-end, { desc = '[T]oggle [D]iagnostics' })
-
 -- Toggle terminal
 local term_buf = nil
 local term_win = nil
