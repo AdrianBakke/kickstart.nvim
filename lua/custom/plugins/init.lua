@@ -1,9 +1,6 @@
 -- Custom plugins and overrides
 -- This folder is ignored by kickstart.nvim upstream - no merge conflicts!
 
--- Load custom options first
-require 'custom.options'
-
 return {
   -- Hint.nvim - your AI plugin
   {
