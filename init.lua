@@ -47,8 +47,17 @@ vim.diagnostic.config {
 vim.api.nvim_create_autocmd('CursorHold', {
   group = vim.api.nvim_create_augroup('minimal-diagnostics-float', { clear = true }),
   callback = function()
-    local lnum = vim.api.nvim_win_get_cursor(0)[1] - 1
-    if vim.tbl_isempty(vim.diagnostic.get(0, { lnum = lnum })) then
+    local cursor = vim.api.nvim_win_get_cursor(0)
+    local lnum = cursor[1] - 1
+    local col = cursor[2]
+    local diagnostics = vim.diagnostic.get(0, { lnum = lnum })
+    local under_cursor = vim.iter(diagnostics):any(function(diagnostic)
+      local start_col = diagnostic.col or 0
+      local end_col = diagnostic.end_col or (start_col + 1)
+      return col >= start_col and col < math.max(end_col, start_col + 1)
+    end)
+
+    if not under_cursor then
       return
     end
 
