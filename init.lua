@@ -304,27 +304,10 @@ require('lazy').setup {
   {
     'nvim-treesitter/nvim-treesitter',
     lazy = false,
-    build = function()
-      require('nvim-treesitter').install({
-        'bash',
-        'c',
-        'css',
-        'diff',
-        'html',
-        'haskell',
-        'lua',
-        'markdown',
-        'markdown_inline',
-        'python',
-        'query',
-        'tsx',
-        'typescript',
-        'vim',
-        'vimdoc',
-      }):wait(300000)
-      vim.cmd.TSUpdate()
-    end,
+    build = ':TSUpdate',
     config = function()
+      require('nvim-treesitter').setup {}
+
       vim.api.nvim_create_autocmd('FileType', {
         group = vim.api.nvim_create_augroup('minimal-treesitter', { clear = true }),
         callback = function(args)
