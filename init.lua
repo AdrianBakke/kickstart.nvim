@@ -36,11 +36,8 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus up' })
 
 vim.diagnostic.config {
   severity_sort = true,
-  underline = false,
-  virtual_text = {
-    source = 'if_many',
-    spacing = 2,
-  },
+  underline = { severity = vim.diagnostic.severity.ERROR },
+  virtual_text = false,
   float = {
     border = 'rounded',
     source = 'if_many',
@@ -87,7 +84,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require('lazy').setup({
+require('lazy').setup {
   {
     'folke/tokyonight.nvim',
     priority = 1000,
@@ -311,4 +308,4 @@ require('lazy').setup({
       })
     end,
   },
-})
+}
