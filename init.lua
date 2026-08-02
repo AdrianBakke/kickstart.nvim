@@ -36,7 +36,7 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus up' })
 
 vim.diagnostic.config {
   severity_sort = true,
-  underline = { severity = vim.diagnostic.severity.ERROR },
+  underline = { severity = { min = vim.diagnostic.severity.HINT } },
   virtual_text = false,
   float = {
     border = 'rounded',
@@ -119,6 +119,16 @@ require('lazy').setup {
     },
   },
   {
+    'sindrets/diffview.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    cmd = {
+      'DiffviewOpen',
+      'DiffviewClose',
+      'DiffviewToggleFiles',
+      'DiffviewFileHistory',
+    },
+  },
+  {
     'folke/todo-comments.nvim',
     event = 'VimEnter',
     dependencies = { 'nvim-lua/plenary.nvim' },
@@ -184,6 +194,11 @@ require('lazy').setup {
     opts = {
       keymap = {
         preset = 'default',
+        ['<Tab>'] = { 'select_and_accept', 'snippet_forward', 'fallback' },
+        ['<S-Tab>'] = { 'snippet_backward', 'fallback' },
+        ['<CR>'] = { 'accept', 'fallback' },
+        ['<Up>'] = { 'select_prev', 'fallback' },
+        ['<Down>'] = { 'select_next', 'fallback' },
       },
       appearance = {
         nerd_font_variant = 'mono',
@@ -301,6 +316,16 @@ require('lazy').setup {
       },
     },
   },
+  {
+    dir = '/Users/adrianbakke/repo/nvim/hint.nvim',
+    config = function()
+      require('hint').setup {
+        keymap = '<leader>h',
+        new_session_keymap = '<leader>H',
+      }
+    end,
+  },
+
   {
     'nvim-treesitter/nvim-treesitter',
     lazy = false,
