@@ -28,6 +28,13 @@ vim.o.cursorline = true
 vim.o.scrolloff = 10
 vim.o.confirm = true
 
+-- Pick up files changed outside Neovim (for example, by an agent).
+vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter', 'CursorHold', 'CursorHoldI' }, {
+  group = vim.api.nvim_create_augroup('external-file-changes', { clear = true }),
+  command = 'checktime',
+  desc = 'Reload externally changed files',
+})
+
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus left' })
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus right' })
@@ -174,6 +181,8 @@ require('lazy').setup {
     },
     opts = {
       filesystem = {
+        -- Refresh the tree when files are created, removed, or renamed externally.
+        use_libuv_file_watcher = true,
         window = {
           mappings = {
             ['\\'] = 'close_window',
